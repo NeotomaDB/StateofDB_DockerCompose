@@ -1,9 +1,9 @@
 # build stage
 FROM postgis/postgis as postgres
 
-#ENV POSTGRES_PASSWORD=secret
-#ENV POSTGRES_USER=postgres
-#ENV POSTGRES_DB=database
+ENV POSTGRES_PASSWORD=secret
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_DB=neotoma
 
 RUN  apt update \
   && apt install -y wget \

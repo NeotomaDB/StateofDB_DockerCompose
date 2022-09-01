@@ -1,19 +1,22 @@
 FROM rocker/tidyverse
-WORKDIR /code
 
-RUN install2.r --error \
-lubridate \
-RPostgreSQL \
-DT \
-ggplot2 \
-ggthemes \
-httr \
-jsonlite \
-dplyr \
-leaflet \
-geojsonsf \
-sf
+RUN R -e "install.packages('lubridate')"
+RUN R -e "install.packages('RPostgreSQL ')"
+RUN R -e "install.packages('DT')"
+RUN R -e "install.packages('pacman')"
+RUN R -e "install.packages('ggplot2')"
+RUN R -e "install.packages('ggthemes')"
+RUN R -e "install.packages('httr')"
+RUN R -e "install.packages('jsonlite')"
+RUN R -e "install.packages('dplyr')"
+RUN R -e "install.packages('leaflet')"
+RUN R -e "install.packages('geojsonsf')"
+RUN R -e "install.packages('sf')"
+RUN R -e "install.packages('here')"
+RUN R -e "install.packages('tinytex')"
+RUN Rscript -e "tinytex::install_tinytex()"
 
-COPY StateoftheDB.Rmd StateoftheDB.Rmd
-CMD ['Rscript -e "rmarkdown::render('StateoftheDB.Rmd')"']
+COPY StateoftheDB.Rmd /home/rstudio/app/StateoftheDB.Rmd
 
+
+#docker run --rm -e PASSWORD='test' -v -v $PWD:/home/rstudio/app report make -C '/home/rstudio/app' all

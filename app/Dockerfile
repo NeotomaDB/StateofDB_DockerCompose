@@ -17,6 +17,7 @@ RUN R -e "install.packages('tinytex')"
 RUN Rscript -e "tinytex::install_tinytex()"
 
 COPY StateoftheDB.Rmd /home/rstudio/app/StateoftheDB.Rmd
+COPY Makefile /home/rstudio/app/Makefile
 
 
 #docker run --rm -e PASSWORD='test' -v -v $PWD:/home/rstudio/app report make -C '/home/rstudio/app' all

@@ -35,8 +35,9 @@ lastdate <- today() - years(1)
 
 
 ```{r}
-con <- dbConnect(RPostgres::Postgres(), dbname = "neotoma",
-                        host = "db", port = 2023,
+con <- dbConnect(RPostgres::Postgres(),  bigint = "integer",  dbname = "neotoma",
+                        host = "db", port = 2023, 
+                        #service = "db",
                         user = "postgres", password = "secret")
 p <- function(x) format(x, scientific=FALSE, big.mark=',')
 ```

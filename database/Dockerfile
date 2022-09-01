@@ -20,3 +20,4 @@ RUN wget https://www.neotomadb.org/uploads/snapshots/neotoma_ndb_latest.tar --no
 RUN tar -xf neotoma_ndb_latest.tar -C ./dbout
 RUN gunzip ./dbout/neotoma_ndb_latest.sql.gz
 COPY 01-regenbash.sh /docker-entrypoint-initdb.d/01-regenbash.sh
+

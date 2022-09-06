@@ -1,5 +1,12 @@
 FROM rocker/tidyverse
 
+RUN apt-get update && apt-get install -y \
+    libudunits2-dev\
+    libgdal-dev\
+    libgeos-dev\
+    libproj-dev\
+    libglpk-dev
+
 RUN R -e "install.packages('lubridate')"
 RUN R -e "install.packages('RPostgreSQL ')"
 RUN R -e "install.packages('DT')"
@@ -19,5 +26,5 @@ RUN Rscript -e "tinytex::install_tinytex()"
 COPY StateoftheDB.Rmd /home/rstudio/app/StateoftheDB.Rmd
 COPY Makefile /home/rstudio/app/Makefile
 
-
-#docker run --rm -e PASSWORD='test' -v -v $PWD:/home/rstudio/app report make -C '/home/rstudio/app' all
+# Running only this image - not as a Docker compose file
+#docker run --rm -e PASSWORD='test' -v $PWD:/home/rstudio/app report make -C '/home/rstudio/app' all

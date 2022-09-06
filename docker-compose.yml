@@ -1,13 +1,17 @@
 services:
   db:
-    image: database1
-    volumes: 
-          - ./init:/docker-entrypoint-initdb.d
-    ports: 
-      - 2023:5432
-  app :
-    image: report
-    environment:
-      PASSWORD: test
+    build: database
 
-# docker-compose run --rm app make -C /home/rstudio/app all
+  app :
+    build: app
+
+    volumes:
+      - ./app:/home/rstudio/app
+    environment:
+      PASSWORD: password
+    depends_on: 
+      - db
+    command: make -C '/home/rstudio/app' all
+
+# To run use:
+# docker compose up

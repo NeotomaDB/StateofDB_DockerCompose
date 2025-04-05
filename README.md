@@ -1,3 +1,10 @@
+<!-- badges: start -->
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-orange.svg)](https://www.tidyverse.org/lifecycle/#stable)
+
+<!-- badges: end -->
+
+
 # StateofDB_DockerCompose
 
 Building the State of the Database using Docker Compose
